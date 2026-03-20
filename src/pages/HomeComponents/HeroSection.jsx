@@ -5,7 +5,7 @@ import { ArrowRight } from 'lucide-react';
 const GOLD = '#C9A24A';
 const BROWN = '#1A1A1A';
 
-const HeroSection = ({ currentSlide, setCurrentSlide, heroSlides, isLoggedIn, userRole, handleNavigation }) => {
+const HeroSection = ({ currentSlide, heroSlides, isLoggedIn, userRole, handleNavigation }) => {
     return (
         <section className="relative h-[600px] md:h-[750px] overflow-hidden" style={{ background: '#EFE6CC' }}>
             <AnimatePresence mode="wait">
@@ -132,25 +132,6 @@ const HeroSection = ({ currentSlide, setCurrentSlide, heroSlides, isLoggedIn, us
                         </motion.div>
                     </AnimatePresence>
                 </div>
-            </div>
-
-            {/* Slide dots */}
-            <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-30 flex gap-3">
-                {heroSlides.map((_, index) => (
-                    <button
-                        key={index}
-                        onClick={() => setCurrentSlide(index)}
-                        style={{
-                            height: '3px',
-                            width: index === currentSlide ? '40px' : '16px',
-                            background: index === currentSlide ? GOLD : 'rgba(0,0,0,0.3)',
-                            border: 'none',
-                            borderRadius: '2px',
-                            cursor: 'pointer',
-                            transition: 'all 0.4s'
-                        }}
-                    />
-                ))}
             </div>
 
             {/* Bottom border */}
