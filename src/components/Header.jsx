@@ -37,8 +37,8 @@ import { styled } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 
 // ─── Theme Constants ──────────────────────────────────────────────────────────
-const GOLD_GRADIENT = '#E8C66A';
-const DARK_BG = '#3D2B22';
+const GOLD_GRADIENT = '#C9A24A';
+const DARK_BG = '#EDE0C4';
 
 // Navbar heights
 const NAVBAR_H_MOBILE = 64;   // px
@@ -47,9 +47,9 @@ const NAVBAR_H_DESKTOP = 76;  // px
 // ─── Styled Components ────────────────────────────────────────────────────────
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
-    backgroundColor: DARK_BG,
-    boxShadow: '0 2px 10px rgba(0,0,0,0.3)',
-    borderBottom: '1px solid #4A3728',
+    background: '#EFE6CC',
+    boxShadow: '0 2px 10px rgba(0,0,0,0.15)',
+    borderBottom: '1px solid #C9A24A',
     height: `${NAVBAR_H_MOBILE}px`,
     justifyContent: 'center',
     position: 'fixed',
@@ -78,7 +78,7 @@ const LogoImage = styled('img')(({ theme }) => ({
     width: 'auto',
     objectFit: 'contain',
     display: 'block',
-    // slight horizontal padding so it doesn't touch the very edge
+    mixBlendMode: 'multiply',   // blends white/cream bg of logo with navbar bg
     paddingLeft: '4px',
     paddingRight: '4px',
     [theme.breakpoints.up('md')]: {
@@ -128,20 +128,19 @@ const NavButton = styled(Button)(({ theme }) => ({
     fontFamily: "'Playfair Display', serif",
     fontSize: '15px',
     fontWeight: 700,
-    background: GOLD_GRADIENT,
-    WebkitBackgroundClip: 'text',
-    WebkitTextFillColor: 'transparent',
-    backgroundClip: 'text',
+    color: '#C9A24A',
+    WebkitTextFillColor: '#C9A24A',
     textTransform: 'none',
     padding: '4px 8px',
     minWidth: 'auto',
     whiteSpace: 'nowrap',
     '&:hover': {
-        backgroundColor: 'rgba(232, 198, 106, 0.12)',
-        WebkitTextFillColor: '#E8C66A',
+        backgroundColor: 'rgba(139,105,20,0.1)',
+        color: '#C9A24A',
+        WebkitTextFillColor: '#C9A24A',
     },
     '&.active': { opacity: 1 },
-    transition: 'opacity 0.2s ease-in-out',
+    transition: 'all 0.2s ease-in-out',
     [theme.breakpoints.up('xl')]: {
         fontSize: '17px',
         padding: '6px 12px',
@@ -152,15 +151,15 @@ const RegisterButton = styled(Button)(({ theme }) => ({
     fontFamily: "'Playfair Display', serif",
     fontSize: '15px',
     fontWeight: 600,
-    background: GOLD_GRADIENT,
-    color: DARK_BG,
+    background: '#C9A24A',
+    color: '#fff',
     padding: '6px 14px',
     borderRadius: '4px',
     textTransform: 'none',
     whiteSpace: 'nowrap',
     '&:hover': {
-        backgroundColor: '#c9a84c',
-        boxShadow: '0 4px 12px rgba(232,198,106,0.4)',
+        background: '#b08c3a',
+        boxShadow: '0 4px 12px rgba(139,105,20,0.4)',
     },
     transition: 'all 0.2s ease-in-out',
     [theme.breakpoints.up('xl')]: {
@@ -174,16 +173,16 @@ const LoginButton = styled(Button)(({ theme }) => ({
     fontSize: '15px',
     fontWeight: 600,
     backgroundColor: 'transparent',
-    border: '1px solid #E8C66A',
-    color: '#E8C66A',
+    border: '1px solid #C9A24A',
+    color: '#C9A24A',
     padding: '6px 14px',
     borderRadius: '4px',
     textTransform: 'none',
     whiteSpace: 'nowrap',
     '&:hover': {
-        backgroundColor: 'rgba(232, 198, 106, 0.15)',
-        boxShadow: '0 4px 12px rgba(232,198,106,0.2)',
-        WebkitTextFillColor: '#E8C66A',
+        backgroundColor: 'rgba(139,105,20,0.12)',
+        boxShadow: '0 4px 12px rgba(139,105,20,0.2)',
+        color: '#C9A24A',
     },
     transition: 'all 0.2s ease-in-out',
     [theme.breakpoints.up('xl')]: {
@@ -196,8 +195,8 @@ const MyAccountButton = styled(Button)(({ theme }) => ({
     fontFamily: "'Playfair Display', serif",
     fontSize: '15px',
     fontWeight: 600,
-    background: GOLD_GRADIENT,
-    color: DARK_BG,
+    background: '#C9A24A',
+    color: '#fff',
     padding: '5px 16px',
     borderRadius: '8px',
     textTransform: 'none',
@@ -206,8 +205,8 @@ const MyAccountButton = styled(Button)(({ theme }) => ({
     alignItems: 'center',
     gap: '6px',
     '&:hover': {
-        backgroundColor: '#c9a84c',
-        boxShadow: '0 4px 12px rgba(232,198,106,0.4)',
+        background: '#b08c3a',
+        boxShadow: '0 4px 12px rgba(139,105,20,0.4)',
     },
     transition: 'all 0.2s ease-in-out',
     [theme.breakpoints.up('xl')]: {
@@ -220,8 +219,8 @@ const AdminDashboardButton = styled(Button)(({ theme }) => ({
     fontFamily: "'Playfair Display', serif",
     fontSize: '15px',
     fontWeight: 600,
-    background: GOLD_GRADIENT,
-    color: DARK_BG,
+    background: '#C9A24A',
+    color: '#fff',
     padding: '5px 16px',
     borderRadius: '8px',
     textTransform: 'none',
@@ -230,8 +229,8 @@ const AdminDashboardButton = styled(Button)(({ theme }) => ({
     alignItems: 'center',
     gap: '6px',
     '&:hover': {
-        backgroundColor: '#c9a84c',
-        boxShadow: '0 4px 12px rgba(232,198,106,0.4)',
+        background: '#b08c3a',
+        boxShadow: '0 4px 12px rgba(139,105,20,0.4)',
     },
     transition: 'all 0.2s ease-in-out',
     [theme.breakpoints.up('xl')]: {
@@ -241,12 +240,12 @@ const AdminDashboardButton = styled(Button)(({ theme }) => ({
 }));
 
 const LogoutMenuItem = styled(MenuItem)({
-    color: '#d32f2f',
+    color: '#c0392b',
     '&:hover': { backgroundColor: 'rgba(211, 47, 47, 0.08)' },
 });
 
 const StyledListItemButton = styled(ListItemButton)({
-    '&:hover': { backgroundColor: 'rgba(212, 175, 55, 0.12)' },
+    '&:hover': { backgroundColor: 'rgba(139,105,20,0.1)' },
     transition: 'all 0.2s ease-in-out',
 });
 
@@ -380,33 +379,32 @@ const Header = () => {
     const darkMenuPaperSx = {
         mt: 1.5,
         minWidth: '180px',
-        backgroundColor: DARK_BG,
-        boxShadow: '0px 10px 40px rgba(0,0,0,0.4)',
-        border: '1px solid #4A3728',
+        backgroundColor: '#EFE6CC',
+        boxShadow: '0px 10px 40px rgba(0,0,0,0.15)',
+        border: '1px solid #C9A24A',
         borderRadius: '12px',
         overflow: 'visible',
         '&:before': {
             content: '""', display: 'block', position: 'absolute',
             top: 0, left: 24, width: 10, height: 10,
-            bgcolor: DARK_BG, transform: 'translateY(-50%) rotate(45deg)', zIndex: 0,
-            borderTop: '1px solid #4A3728', borderLeft: '1px solid #4A3728',
+            bgcolor: '#EFE6CC', transform: 'translateY(-50%) rotate(45deg)', zIndex: 0,
+            borderTop: '1px solid #C9A24A', borderLeft: '1px solid #C9A24A',
         },
     };
 
     const darkMenuItemSx = {
         fontFamily: "'Playfair Display', serif",
         fontSize: '14px', fontWeight: 700,
-        background: GOLD_GRADIENT,
-        WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
+        color: '#C9A24A',
         borderRadius: '8px', py: 1, px: 1.5,
-        '&:hover': { backgroundColor: 'rgba(232, 198, 106, 0.15)', WebkitTextFillColor: '#E8C66A', background: 'none' }
+        '&:hover': { backgroundColor: 'rgba(139,105,20,0.12)', color: '#C9A24A' }
     };
 
     // ── Mobile Drawer ──────────────────────────────────────────────────────────
     const drawer = (
-        <Box sx={{ width: 280, pt: 2, display: 'flex', flexDirection: 'column', height: '100%', backgroundColor: DARK_BG }}>
+        <Box sx={{ width: 280, pt: 2, display: 'flex', flexDirection: 'column', height: '100%', background: '#EFE6CC' }}>
             {/* Logo inside drawer */}
-            <Box sx={{ px: 2, pb: 2, borderBottom: '1px solid #4A3728', mb: 1 }}>
+            <Box sx={{ px: 2, pb: 2, borderBottom: '1px solid #C9A24A', mb: 1 }}>
                 <LogoContainer onClick={() => handleNavigation('/')}>
                     {!logoError && (
                         <LogoImage
@@ -423,21 +421,21 @@ const Header = () => {
             <List sx={{ flexGrow: 1 }}>
                 <ListItem disablePadding>
                     <StyledListItemButton onClick={() => handleNavigation('/')}>
-                        <ListItemText primary="Home" sx={{ '& .MuiTypography-root': { fontFamily: "'Playfair Display', serif", fontSize: '14px', fontWeight: 700, background: GOLD_GRADIENT, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' } }} />
+                        <ListItemText primary="Home" sx={{ '& .MuiTypography-root': { fontFamily: "'Playfair Display', serif", fontSize: '14px', fontWeight: 700, background: GOLD_GRADIENT, WebkitBackgroundClip: 'text', color: '#C9A24A' } }} />
                     </StyledListItemButton>
                 </ListItem>
 
                 {/* Company Submenu */}
                 <ListItem disablePadding sx={{ flexDirection: 'column', alignItems: 'flex-start' }}>
                     <StyledListItemButton onClick={handleMobileCompanyToggle} sx={{ width: '100%' }}>
-                        <ListItemText primary="Sanyukt Parivaar" sx={{ '& .MuiTypography-root': { fontFamily: "'Playfair Display', serif", fontSize: '14px', fontWeight: 700, background: GOLD_GRADIENT, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' } }} />
-                        {mobileSubmenu === 'company' ? <ExpandLess sx={{ color: '#E8C66A' }} /> : <ExpandMore sx={{ color: '#E8C66A' }} />}
+                        <ListItemText primary="Sanyukt Parivaar" sx={{ '& .MuiTypography-root': { fontFamily: "'Playfair Display', serif", fontSize: '14px', fontWeight: 700, background: GOLD_GRADIENT, WebkitBackgroundClip: 'text', color: '#C9A24A' } }} />
+                        {mobileSubmenu === 'company' ? <ExpandLess sx={{ color: '#C9A24A' }} /> : <ExpandMore sx={{ color: '#C9A24A' }} />}
                     </StyledListItemButton>
                     <Collapse in={mobileSubmenu === 'company'} timeout="auto" unmountOnExit sx={{ width: '100%' }}>
                         <List component="div" disablePadding>
                             {companySubItems.map((subItem) => (
                                 <StyledListItemButton key={subItem.name} sx={{ pl: 4 }} onClick={() => handleNavigation(subItem.path)}>
-                                    <ListItemText primary={subItem.name} sx={{ '& .MuiTypography-root': { fontFamily: "'Playfair Display', serif", fontSize: '13px', fontWeight: 400, background: GOLD_GRADIENT, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' } }} />
+                                    <ListItemText primary={subItem.name} sx={{ '& .MuiTypography-root': { fontFamily: "'Playfair Display', serif", fontSize: '13px', fontWeight: 400, background: GOLD_GRADIENT, WebkitBackgroundClip: 'text', color: '#C9A24A' } }} />
                                 </StyledListItemButton>
                             ))}
                         </List>
@@ -447,7 +445,7 @@ const Header = () => {
                 {menuItems.slice(1).map((item) => (
                     <ListItem key={item.name} disablePadding>
                         <StyledListItemButton onClick={() => handleNavigation(item.path)}>
-                            <ListItemText primary={item.name} sx={{ '& .MuiTypography-root': { fontFamily: "'Playfair Display', serif", fontSize: '14px', fontWeight: 700, background: GOLD_GRADIENT, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' } }} />
+                            <ListItemText primary={item.name} sx={{ '& .MuiTypography-root': { fontFamily: "'Playfair Display', serif", fontSize: '14px', fontWeight: 700, background: GOLD_GRADIENT, WebkitBackgroundClip: 'text', color: '#C9A24A' } }} />
                         </StyledListItemButton>
                     </ListItem>
                 ))}
@@ -455,14 +453,14 @@ const Header = () => {
                 {/* Franchise Submenu */}
                 <ListItem disablePadding sx={{ flexDirection: 'column', alignItems: 'flex-start' }}>
                     <StyledListItemButton onClick={handleMobileFranchiseToggle} sx={{ width: '100%' }}>
-                        <ListItemText primary="Franchise" sx={{ '& .MuiTypography-root': { fontFamily: "'Playfair Display', serif", fontSize: '14px', fontWeight: 700, background: GOLD_GRADIENT, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' } }} />
-                        {mobileSubmenu === 'franchise' ? <ExpandLess sx={{ color: '#E8C66A' }} /> : <ExpandMore sx={{ color: '#E8C66A' }} />}
+                        <ListItemText primary="Franchise" sx={{ '& .MuiTypography-root': { fontFamily: "'Playfair Display', serif", fontSize: '14px', fontWeight: 700, background: GOLD_GRADIENT, WebkitBackgroundClip: 'text', color: '#C9A24A' } }} />
+                        {mobileSubmenu === 'franchise' ? <ExpandLess sx={{ color: '#C9A24A' }} /> : <ExpandMore sx={{ color: '#C9A24A' }} />}
                     </StyledListItemButton>
                     <Collapse in={mobileSubmenu === 'franchise'} timeout="auto" unmountOnExit sx={{ width: '100%' }}>
                         <List component="div" disablePadding>
                             {franchiseSubItems.map((subItem) => (
                                 <StyledListItemButton key={subItem.name} sx={{ pl: 4 }} onClick={() => handleNavigation(subItem.path)}>
-                                    <ListItemText primary={subItem.name} sx={{ '& .MuiTypography-root': { fontFamily: "'Playfair Display', serif", fontSize: '13px', fontWeight: 400, background: GOLD_GRADIENT, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' } }} />
+                                    <ListItemText primary={subItem.name} sx={{ '& .MuiTypography-root': { fontFamily: "'Playfair Display', serif", fontSize: '13px', fontWeight: 400, background: GOLD_GRADIENT, WebkitBackgroundClip: 'text', color: '#C9A24A' } }} />
                                 </StyledListItemButton>
                             ))}
                         </List>
@@ -472,7 +470,7 @@ const Header = () => {
                 {trailItems.map((item) => (
                     <ListItem key={item.name} disablePadding>
                         <StyledListItemButton onClick={() => handleNavigation(item.path)}>
-                            <ListItemText primary={item.name} sx={{ '& .MuiTypography-root': { fontFamily: "'Playfair Display', serif", fontSize: '14px', fontWeight: 700, background: GOLD_GRADIENT, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' } }} />
+                            <ListItemText primary={item.name} sx={{ '& .MuiTypography-root': { fontFamily: "'Playfair Display', serif", fontSize: '14px', fontWeight: 700, background: GOLD_GRADIENT, WebkitBackgroundClip: 'text', color: '#C9A24A' } }} />
                         </StyledListItemButton>
                     </ListItem>
                 ))}
@@ -494,30 +492,30 @@ const Header = () => {
                                 <>
                                     <ListItem disablePadding sx={{ flexDirection: 'column', alignItems: 'flex-start' }}>
                                         <StyledListItemButton onClick={handleMobileAccountToggle} sx={{ width: '100%', justifyContent: 'center' }}>
-                                            <AccountCircleIcon sx={{ mr: 1, color: '#E8C66A' }} />
-                                            <ListItemText primary={getDisplayName()} sx={{ '& .MuiTypography-root': { fontFamily: "'Playfair Display', serif", fontSize: '14px', fontWeight: 600, background: GOLD_GRADIENT, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' } }} />
-                                            {mobileSubmenu === 'account' ? <ExpandLess sx={{ color: '#E8C66A' }} /> : <ExpandMore sx={{ color: '#E8C66A' }} />}
+                                            <AccountCircleIcon sx={{ mr: 1, color: '#C9A24A' }} />
+                                            <ListItemText primary={getDisplayName()} sx={{ '& .MuiTypography-root': { fontFamily: "'Playfair Display', serif", fontSize: '14px', fontWeight: 600, background: GOLD_GRADIENT, WebkitBackgroundClip: 'text', color: '#C9A24A' } }} />
+                                            {mobileSubmenu === 'account' ? <ExpandLess sx={{ color: '#C9A24A' }} /> : <ExpandMore sx={{ color: '#C9A24A' }} />}
                                         </StyledListItemButton>
                                         <Collapse in={mobileSubmenu === 'account'} timeout="auto" unmountOnExit sx={{ width: '100%' }}>
                                             <List component="div" disablePadding>
                                                 {accountSubItems.map((subItem) => (
                                                     <StyledListItemButton key={subItem.name} sx={{ pl: 4 }} onClick={() => handleNavigation(subItem.path)}>
-                                                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, color: '#E8C66A' }}>
+                                                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, color: '#C9A24A' }}>
                                                             {subItem.icon}
-                                                            <ListItemText primary={subItem.name} sx={{ '& .MuiTypography-root': { fontFamily: "'Playfair Display', serif", fontSize: '13px', fontWeight: 400, background: GOLD_GRADIENT, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' } }} />
+                                                            <ListItemText primary={subItem.name} sx={{ '& .MuiTypography-root': { fontFamily: "'Playfair Display', serif", fontSize: '13px', fontWeight: 400, background: GOLD_GRADIENT, WebkitBackgroundClip: 'text', color: '#C9A24A' } }} />
                                                         </Box>
                                                     </StyledListItemButton>
                                                 ))}
                                                 <StyledListItemButton sx={{ pl: 4 }} onClick={() => handleNavigation('/my-account')}>
-                                                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, color: '#E8C66A' }}>
+                                                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, color: '#C9A24A' }}>
                                                         <DashboardIcon fontSize="small" />
-                                                        <ListItemText primary="Dashboard Home" sx={{ '& .MuiTypography-root': { fontFamily: "'Playfair Display', serif", fontSize: '13px', fontWeight: 400, background: GOLD_GRADIENT, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' } }} />
+                                                        <ListItemText primary="Dashboard Home" sx={{ '& .MuiTypography-root': { fontFamily: "'Playfair Display', serif", fontSize: '13px', fontWeight: 400, background: GOLD_GRADIENT, WebkitBackgroundClip: 'text', color: '#C9A24A' } }} />
                                                     </Box>
                                                 </StyledListItemButton>
                                             </List>
                                         </Collapse>
                                     </ListItem>
-                                    <LoginButton onClick={handleLogout} sx={{ ml: 0, width: '100%', borderColor: '#d32f2f', WebkitTextFillColor: '#d32f2f', background: 'none', color: '#d32f2f', mt: 1 }}>
+                                    <LoginButton onClick={handleLogout} sx={{ ml: 0, width: '100%', borderColor: '#d32f2f', WebkitTextFillColor: '#d32f2f', background: 'none', color: '#c0392b', mt: 1 }}>
                                         <LogoutIcon sx={{ mr: 1 }} />Logout
                                     </LoginButton>
                                 </>
@@ -590,57 +588,13 @@ const Header = () => {
                                 </NavButton>
                             ))}
 
-                            {/* Auth / User Menu */}
-                            {isLoggedIn ? (
-                                <>
-                                    {isAdmin() ? (
-                                        <AdminDashboardButton onClick={handleUserMenuClick} startIcon={<AdminPanelSettingsIcon />}>
-                                            {getDisplayName()}
-                                        </AdminDashboardButton>
-                                    ) : (
-                                        <MyAccountButton onClick={handleUserMenuClick} startIcon={
-                                            <Avatar src={userData?.profileImage || undefined} sx={{ width: 24, height: 24, bgcolor: 'rgba(43,31,26,0.4)', fontSize: 12, fontWeight: 700, color: DARK_BG }}>
-                                                {!userData?.profileImage && getUserInitials()}
-                                            </Avatar>
-                                        }>
-                                            {getDisplayName()}
-                                        </MyAccountButton>
-                                    )}
-                                    <Menu anchorEl={anchorElUser} open={openUserMenu} onClose={handleUserMenuClose} anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} transformOrigin={{ vertical: 'top', horizontal: 'right' }} MenuListProps={{ sx: { padding: '10px', minWidth: '220px' } }} slotProps={{ paper: { elevation: 0, sx: { mt: 1.5, backgroundColor: DARK_BG, boxShadow: '0px 10px 40px rgba(0,0,0,0.4)', border: '1px solid #4A3728', borderRadius: '12px', overflow: 'visible', '&:before': { content: '""', display: 'block', position: 'absolute', top: 0, right: 28, width: 10, height: 10, bgcolor: DARK_BG, transform: 'translateY(-50%) rotate(45deg)', zIndex: 0, borderTop: '1px solid #4A3728', borderLeft: '1px solid #4A3728' } } } }}>
-                                        {isAdmin() ? (
-                                            <MenuItem onClick={handleAdminDashboardClick} sx={{ ...darkMenuItemSx, gap: 1.5, py: 1.2, display: 'flex', alignItems: 'center' }}>
-                                                <DashboardIcon fontSize="small" sx={{ color: '#E8C66A' }} />Admin Dashboard
-                                            </MenuItem>
-                                        ) : (
-                                            [
-                                                { label: 'Dashboard', icon: <DashboardIcon fontSize="small" />, path: '/my-account' },
-                                                { label: 'My Orders', icon: <ReceiptIcon fontSize="small" />, path: '/my-account/orders' },
-                                                { label: 'My Profile', icon: <PersonIcon fontSize="small" />, path: '/my-account/profile' },
-                                                { label: 'Transactions', icon: <HistoryIcon fontSize="small" />, path: '/my-account/transactions' },
-                                                { label: 'KYC Status', icon: <FingerprintIcon fontSize="small" />, path: '/my-account/kyc' },
-                                            ].map((item) => (
-                                                <MenuItem key={item.label} onClick={() => handleNavigation(item.path)} sx={{ ...darkMenuItemSx, gap: 2, py: 1.2, mb: 0.5, display: 'flex', alignItems: 'center', '& .MuiSvgIcon-root': { fontSize: '20px', color: '#E8C66A', transition: 'color 0.2s' } }}>
-                                                    {item.icon}{item.label}
-                                                </MenuItem>
-                                            ))
-                                        )}
-                                        <LogoutMenuItem onClick={handleLogout} sx={{ fontFamily: "'Playfair Display', serif", fontSize: '14px', fontWeight: 600, borderRadius: '8px', gap: 2, py: 1.2, px: 1.5, mt: 0.5, borderTop: '1px solid #4A3728', '& .MuiSvgIcon-root': { fontSize: '20px' } }}>
-                                            <LogoutIcon />Logout
-                                        </LogoutMenuItem>
-                                    </Menu>
-                                </>
-                            ) : (
-                                <>
-                                    <RegisterButton onClick={() => handleNavigation('/register')} sx={{ ml: 1 }}>Register</RegisterButton>
-                                    <LoginButton onClick={() => handleNavigation('/login')} sx={{ ml: 1 }}>Login</LoginButton>
-                                </>
-                            )}
+                            {/* Auth / User Menu — REMOVED FROM HERE, moved after Contact Us */}
 
                             {/* Franchise Dropdown */}
                             <Box sx={{ position: 'relative' }}>
                                 <NavButton className={isFranchiseActive() ? 'active' : ''} onClick={handleFranchiseClick} sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
                                     Franchise
-                                    <ExpandMore sx={{ fontSize: '18px', color: '#E8C66A', transform: openFranchiseMenu ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }} />
+                                    <ExpandMore sx={{ fontSize: '18px', color: '#C9A24A', transform: openFranchiseMenu ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }} />
                                 </NavButton>
                                 <Menu anchorEl={anchorElFranchise} open={openFranchiseMenu} onClose={handleFranchiseClose} anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }} transformOrigin={{ vertical: 'top', horizontal: 'left' }} MenuListProps={{ sx: { padding: '8px' } }} slotProps={{ paper: { elevation: 0, sx: { ...darkMenuPaperSx, '&:before': { ...darkMenuPaperSx['&:before'], bgcolor: DARK_BG } } } }} disableScrollLock>
                                     {franchiseSubItems.map((item) => (
@@ -654,11 +608,57 @@ const Header = () => {
                                     {item.name}
                                 </NavButton>
                             ))}
+
+                            {/* ── Auth / User Menu — after Contact Us ── */}
+                            {isLoggedIn ? (
+                                <>
+                                    {isAdmin() ? (
+                                        <AdminDashboardButton onClick={handleUserMenuClick} startIcon={<AdminPanelSettingsIcon />}>
+                                            {getDisplayName()}
+                                        </AdminDashboardButton>
+                                    ) : (
+                                        <MyAccountButton onClick={handleUserMenuClick} startIcon={
+                                            <Avatar src={userData?.profileImage || undefined} sx={{ width: 24, height: 24, bgcolor: 'rgba(201,162,74,0.2)', fontSize: 12, fontWeight: 700, color: '#C9A24A' }}>
+                                                {!userData?.profileImage && getUserInitials()}
+                                            </Avatar>
+                                        }>
+                                            {getDisplayName()}
+                                        </MyAccountButton>
+                                    )}
+                                    <Menu anchorEl={anchorElUser} open={openUserMenu} onClose={handleUserMenuClose} anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} transformOrigin={{ vertical: 'top', horizontal: 'right' }} MenuListProps={{ sx: { padding: '10px', minWidth: '220px' } }} slotProps={{ paper: { elevation: 0, sx: { mt: 1.5, backgroundColor: '#EFE6CC', boxShadow: '0px 10px 40px rgba(0,0,0,0.15)', border: '1px solid #C9A24A', borderRadius: '12px', overflow: 'visible', '&:before': { content: '""', display: 'block', position: 'absolute', top: 0, right: 28, width: 10, height: 10, bgcolor: '#EFE6CC', transform: 'translateY(-50%) rotate(45deg)', zIndex: 0, borderTop: '1px solid #C9A24A', borderLeft: '1px solid #C9A24A' } } } }}>
+                                        {isAdmin() ? (
+                                            <MenuItem onClick={handleAdminDashboardClick} sx={{ ...darkMenuItemSx, gap: 1.5, py: 1.2, display: 'flex', alignItems: 'center' }}>
+                                                <DashboardIcon fontSize="small" sx={{ color: '#C9A24A' }} />Admin Dashboard
+                                            </MenuItem>
+                                        ) : (
+                                            [
+                                                { label: 'Dashboard', icon: <DashboardIcon fontSize="small" />, path: '/my-account' },
+                                                { label: 'My Orders', icon: <ReceiptIcon fontSize="small" />, path: '/my-account/orders' },
+                                                { label: 'My Profile', icon: <PersonIcon fontSize="small" />, path: '/my-account/profile' },
+                                                { label: 'Transactions', icon: <HistoryIcon fontSize="small" />, path: '/my-account/transactions' },
+                                                { label: 'KYC Status', icon: <FingerprintIcon fontSize="small" />, path: '/my-account/kyc' },
+                                            ].map((item) => (
+                                                <MenuItem key={item.label} onClick={() => handleNavigation(item.path)} sx={{ ...darkMenuItemSx, gap: 2, py: 1.2, mb: 0.5, display: 'flex', alignItems: 'center', '& .MuiSvgIcon-root': { fontSize: '20px', color: '#C9A24A', transition: 'color 0.2s' } }}>
+                                                    {item.icon}{item.label}
+                                                </MenuItem>
+                                            ))
+                                        )}
+                                        <LogoutMenuItem onClick={handleLogout} sx={{ fontFamily: "'Playfair Display', serif", fontSize: '14px', fontWeight: 600, borderRadius: '8px', gap: 2, py: 1.2, px: 1.5, mt: 0.5, borderTop: '1px solid #C9A24A', '& .MuiSvgIcon-root': { fontSize: '20px' } }}>
+                                            <LogoutIcon />Logout
+                                        </LogoutMenuItem>
+                                    </Menu>
+                                </>
+                            ) : (
+                                <>
+                                    <RegisterButton onClick={() => handleNavigation('/register')} sx={{ ml: 1 }}>Register</RegisterButton>
+                                    <LoginButton onClick={() => handleNavigation('/login')} sx={{ ml: 1 }}>Login</LoginButton>
+                                </>
+                            )}
                         </Box>
 
                         {/* ── RIGHT — HAMBURGER (MOBILE/TABLET) ── */}
                         <Box sx={{ display: { xs: 'flex', lg: 'none' }, pr: 1 }}>
-                            <IconButton color="inherit" aria-label="open drawer" edge="start" onClick={handleDrawerToggle} sx={{ color: '#E8C66A' }}>
+                            <IconButton color="inherit" aria-label="open drawer" edge="start" onClick={handleDrawerToggle} sx={{ color: '#C9A24A' }}>
                                 <MenuIcon fontSize="large" />
                             </IconButton>
                         </Box>
@@ -675,7 +675,7 @@ const Header = () => {
                     open={mobileOpen}
                     onClose={handleDrawerToggle}
                     ModalProps={{ keepMounted: true }}
-                    sx={{ display: { xs: 'block', lg: 'none' }, '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 280, backgroundColor: DARK_BG } }}
+                    sx={{ display: { xs: 'block', lg: 'none' }, '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 280, background: '#EFE6CC' } }}
                 >
                     {drawer}
                 </Drawer>
