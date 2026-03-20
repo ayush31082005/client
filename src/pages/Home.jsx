@@ -74,19 +74,19 @@ const HomePage = () => {
     const heroSlides = [
         {
             image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080&q=80",
-            title: "Welcome to Sanyukt Parivaar & Rich Life Pvt.Ltd.",
+            title: "Welcome to Sanyukt Parivaar\n& Rich Life Pvt.Ltd.",
             subtitle: "A Trusted & Fast-Growing Multi-Level Marketing Platefrom",
             description: "Sanyukt Parivaar & Rich Life Pvt.Ltd. is a people-driven direct selling organization committed to empowering individuals with sustainable income opportunities. Through our transparent MLM business model and high-quality products, we help ordinary people build extraordinary futures."
         },
         {
             image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080&q=80",
-            title: "Welcome to Sanyukt Parivaar & Rich Life Pvt.Ltd.",
+            title: "Welcome to Sanyukt Parivaar\n& Rich Life Pvt.Ltd.",
             subtitle: "A Trusted & Fast-Growing Multi-Level MarketingPlateform",
             description: "Sanyukt Parivaar & Rich Life Pvt.Ltd. is a people-driven direct selling organization committed to empowering individuals with sustainable income opportunities. Through our transparent MLM business model and high-quality products, we help ordinary people build extraordinary futures."
         },
         {
             image: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080&q=80",
-            title: "Welcome to Sanyukt Parivaar & Rich Life Pvt.Ltd.",
+            title: "Welcome to Sanyukt Parivaar\n& Rich Life Pvt.Ltd.",
             subtitle: "A Trusted & Fast-Growing Multi-Level MarketingPlateform",
             description: "Sanyukt Parivaar & Rich Life Pvt.Ltd. is a people-driven direct selling organization committed to empowering individuals with sustainable income opportunities. Through our transparent MLM business model and high-quality products, we help ordinary people build extraordinary futures."
         }

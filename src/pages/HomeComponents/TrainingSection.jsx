@@ -3,7 +3,7 @@ import { ArrowRight, Play } from 'lucide-react';
 
 const TrainingSection = ({ supportItems, trainingImage, handleNavigation }) => {
     return (
-        <section style={{ background: '#0a0800', padding: '80px 0', borderTop: '1px solid rgba(201,168,76,0.1)' }}>
+        <section style={{ background: '#3D2B1F', padding: '80px 0', borderTop: '1px solid rgba(201,168,76,0.1)' }}>
             <div className="container mx-auto px-4 md:px-12">
                 <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
                     {/* Image */}

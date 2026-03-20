@@ -52,7 +52,8 @@ const HeroSection = ({ currentSlide, heroSlides, isLoggedIn, userRole, handleNav
                                 lineHeight: 1.15,
                                 color: GOLD,
                                 marginBottom: '16px',
-                                textShadow: '0 2px 12px rgba(0,0,0,0.3)'
+                                whiteSpace: 'pre-line',
+                                textShadow: '2px 2px 0 rgba(26,26,26,0.55), 0 2px 12px rgba(0,0,0,0.25)'
                             }}>
                                 {heroSlides[currentSlide].title}
                             </h1>
@@ -60,9 +61,9 @@ const HeroSection = ({ currentSlide, heroSlides, isLoggedIn, userRole, handleNav
                                 fontFamily: 'Georgia, serif',
                                 fontStyle: 'italic',
                                 fontSize: 'clamp(1rem, 2.2vw, 1.35rem)',
-                                color: '#F5EDD8',
+                                color: GOLD,
                                 marginBottom: '20px',
-                                fontWeight: 500,
+                                fontWeight: 800,
                                 textShadow: '0 1px 8px rgba(0,0,0,0.25)'
                             }}>
                                 {heroSlides[currentSlide].subtitle}
