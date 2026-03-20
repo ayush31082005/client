@@ -1,18 +1,22 @@
 import React from 'react';
 import { Smartphone, ArrowRight, Check } from 'lucide-react';
 
-const BG = '#F5EDD8';
+const BG = '#3D2B1F';
 const CARD = '#EFE6CC';
 const GOLD = '#C9A24A';
 const BROWN = '#1A1A1A';
 
 const inputStyle = {
-    width: '100%', padding: '13px 16px',
-    background: '#FFFFFF',
-    border: '1px solid rgba(139,94,10,0.3)',
-    borderRadius: '4px', color: '#1A1A1A',
-    fontSize: '0.9rem', outline: 'none',
-    fontFamily: 'inherit', transition: 'border-color 0.3s'
+    width: '100%',
+    padding: '13px 16px',
+    background: '#FFFFFF',   // ✅ white background
+    border: '1px solid rgba(201,162,74,0.4)',
+    borderRadius: '4px',
+    color: '#000000',        // ✅ black text
+    fontSize: '0.9rem',
+    outline: 'none',
+    fontFamily: 'inherit',
+    transition: 'border-color 0.3s'
 };
 
 const features = [
@@ -42,15 +46,15 @@ const RechargeSection = ({
                     <div>
                         <div className="flex items-center gap-3 mb-4">
                             <div style={{ height: '1px', width: '40px', background: `linear-gradient(90deg, transparent, ${GOLD})` }} />
-                            <span style={{ color: '#000000', fontSize: '0.65rem', letterSpacing: '4px', textTransform: 'uppercase', fontWeight: 600 }}>Fast & Secure</span>
+                            <span style={{ color: '#FFFFF4', fontSize: '0.65rem', letterSpacing: '4px', textTransform: 'uppercase', fontWeight: 600 }}>Fast & Secure</span>
                         </div>
-                        <h2 style={{ fontFamily: 'Georgia, serif', fontSize: 'clamp(1.8rem, 3vw, 2.8rem)', color: '#1A1A1A', lineHeight: 1.2, marginBottom: '16px' }}>
+                        <h2 style={{ fontFamily: 'Georgia, serif', fontSize: 'clamp(1.8rem, 3vw, 2.8rem)', color: '#fffffa', lineHeight: 1.2, marginBottom: '16px' }}>
                             Instant Mobile<br />
-                            <em style={{ color: '#000000', fontStyle: 'italic' }}>Recharge</em>
+                            <em style={{ color: '#FFFFF4', fontStyle: 'italic' }}>Recharge</em>
                         </h2>
                         <p
                             style={{
-                                color: '#000000',
+                                color: '#FFFFF4',
                                 lineHeight: 1.85,
                                 fontSize: '0.9rem',
                                 marginBottom: '32px',
@@ -64,14 +68,14 @@ const RechargeSection = ({
                                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                                     <div style={{
                                         width: '22px', height: '22px', minWidth: '22px',
-                                        background: 'rgba(201,162,74,0.15)',
+                                        background: '#fffffa',
                                         border: `1px solid rgba(201,162,74,0.4)`,
                                         borderRadius: '50%',
                                         display: 'flex', alignItems: 'center', justifyContent: 'center'
                                     }}>
                                         <Check size={11} color={GOLD} />
                                     </div>
-                                    <span style={{ fontSize: '0.87rem', color: 'rgba(0,0,0,0.75)' }}>{f}</span>
+                                    <span style={{ fontSize: '0.87rem', color: '#fffff' }}>{f}</span>
                                 </div>
                             ))}
                         </div>
@@ -110,7 +114,7 @@ const RechargeSection = ({
 
                         <form onSubmit={handleRecharge} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                             <div>
-                                <label style={{ fontSize: '0.63rem', letterSpacing: '2px', textTransform: 'uppercase', color: '#1A1A1A', fontWeight: 600, display: 'block', marginBottom: '6px' }}>
+                                <label style={{ fontSize: '0.63rem', letterSpacing: '2px', textTransform: 'uppercase', textcolor: '#1A1A1A', fontWeight: 600, display: 'block', marginBottom: '6px' }}>
                                     Mobile Number
                                 </label>
                                 <input

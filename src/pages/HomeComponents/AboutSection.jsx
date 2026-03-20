@@ -29,7 +29,7 @@ const AboutSection = ({ aboutImage, teamImages }) => {
                             Sanyukt Parivaar & Rich Life Pvt.Ltd.
                         </h3>
                         <p style={{ color: '#000000', lineHeight: 1.9, fontSize: '0.9rem', marginBottom: '16px' }}>
-                            Founded with a clear vision — to create financial independence through ethical direct selling. We believe in growing together as one family, where every member gets equal opportunity, proper training, and long-term support.
+                            Founded with a clear vision to create financial independence through ethical direct selling. We believe in growing together as one family, where every member gets equal opportunity, proper training, and long-term support.
                         </p>
                         <p style={{ color: BROWN_MID, lineHeight: 1.9, fontSize: '0.9rem' }}>
                             Our company focuses on personal development, leadership growth, and community success while promoting reliable lifestyle, wellness, and personal care products.

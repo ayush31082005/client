@@ -17,7 +17,7 @@ const HeroSection = ({ currentSlide, setCurrentSlide, heroSlides, isLoggedIn, us
                     transition={{ duration: 1.5 }}
                     className="absolute inset-0"
                 >
-                    {/* Overlay — light left-side gradient so text is readable but image is clearly visible */}
+                    {/* Overlay light left-side gradient so text is readable but image is clearly visible */}
                     <div className="absolute inset-0 z-10" style={{
                         background: 'linear-gradient(105deg, rgba(239,230,204,0.75) 0%, rgba(239,230,204,0.4) 45%, rgba(239,230,204,0.1) 100%)'
                     }} />

@@ -25,35 +25,36 @@ const WhyChooseSection = ({ whyChoosePoints }) => {
                     </p>
                 </div>
 
-                {/* Cards — image 1 style: rounded, beige bg, gold icon top-center, title, description */}
+                {/* Cards image 1 style: rounded, beige bg, gold icon top-center, title, description */}
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-5 md:gap-6">
                     {whyChoosePoints.map((point, index) => (
                         <div
                             key={index}
                             style={{
                                 background: CARD,
-                                border: `1.5px solid ${BORDER}`,
+                                border: `3px solid ${BORDER}`,
                                 borderRadius: '12px',
                                 padding: '32px 20px 28px',
                                 textAlign: 'center',
                                 cursor: 'pointer',
-                                transition: 'all 0.3s',
+                                transition: 'all 0.3s ease',
                                 boxShadow: '0 2px 10px rgba(44,26,14,0.07)',
                                 position: 'relative',
                                 overflow: 'hidden',
                             }}
                             onMouseEnter={e => {
-                                e.currentTarget.style.border = `1.5px solid ${GOLD}`;
-                                e.currentTarget.style.transform = 'translateY(-5px)';
-                                e.currentTarget.style.boxShadow = '0 12px 32px rgba(44,26,14,0.14)';
+                                e.currentTarget.style.border = '1.5px solid transparent'; // ❌ border hata diya
+                                e.currentTarget.style.transform = 'translateY(-6px)';
+                                e.currentTarget.style.boxShadow = '0 12px 30px rgba(201,162,74,0.25)';
                             }}
+
                             onMouseLeave={e => {
-                                e.currentTarget.style.border = `1.5px solid ${BORDER}`;
+                                e.currentTarget.style.border = `1.5px solid ${BORDER}`; // ✅ wapas normal border
                                 e.currentTarget.style.transform = 'none';
                                 e.currentTarget.style.boxShadow = '0 2px 10px rgba(44,26,14,0.07)';
                             }}
                         >
-                            {/* Gold icon circle — top center */}
+                            {/* Gold icon circle top center */}
                             <div style={{
                                 width: '52px', height: '52px',
                                 background: 'rgba(201,162,74,0.18)',
@@ -66,7 +67,7 @@ const WhyChooseSection = ({ whyChoosePoints }) => {
                                 {point.icon}
                             </div>
 
-                            {/* Title — use first few words as title */}
+                            {/* Title use first few words as title */}
                             <div style={{
                                 fontFamily: 'Georgia, serif',
                                 fontSize: '0.95rem', fontWeight: 700,

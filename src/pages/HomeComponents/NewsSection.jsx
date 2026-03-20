@@ -41,7 +41,7 @@ const NewsSection = () => {
     };
 
     const sectionStyle = {
-        background: '#0f0d07',
+        background: '#F5EDD8',
         padding: '80px 0',
         borderTop: '1px solid rgba(201,168,76,0.1)'
     };
@@ -53,10 +53,10 @@ const NewsSection = () => {
                 <span style={{ color: '#c9a84c', fontSize: '0.65rem', letterSpacing: '4px', textTransform: 'uppercase', fontWeight: 600 }}>News & Updates</span>
                 <div style={{ height: '1px', width: '60px', background: 'linear-gradient(90deg, #c9a84c, transparent)' }} />
             </div>
-            <h2 style={{ fontFamily: 'Georgia, serif', fontSize: 'clamp(1.8rem, 3vw, 2.6rem)', color: '#fff', marginBottom: '10px' }}>
+            <h2 style={{ fontFamily: 'Georgia, serif', fontSize: 'clamp(1.8rem, 3vw, 2.6rem)', color: '#000000', marginBottom: '10px' }}>
                 Latest <em style={{ color: '#e8c97a', fontStyle: 'italic' }}>News</em>
             </h2>
-            <p style={{ color: 'rgba(196,185,154,0.7)', fontSize: '0.85rem', maxWidth: '520px', margin: '0 auto' }}>
+            <p style={{ color: '#000000', fontSize: '0.85rem', maxWidth: '520px', margin: '0 auto' }}>
                 Stay updated with latest announcements, seminars, product launches, and success stories.
             </p>
         </div>

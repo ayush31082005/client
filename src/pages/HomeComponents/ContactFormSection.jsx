@@ -1,7 +1,7 @@
 import React from 'react';
 import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Youtube, Twitter, Check } from 'lucide-react';
 
-const BG = '#F5EDD8';
+const BG = '#3D2B1F';
 const CARD = '#EFE6CC';
 const WHITE = '#FFFFFF';
 const GOLD = '#C9A24A';
@@ -33,10 +33,10 @@ const ContactFormSection = ({ contactForm, setContactForm, handleContactSubmit, 
                         <span style={{ color: GOLD, fontSize: '0.65rem', letterSpacing: '4px', textTransform: 'uppercase', fontWeight: 600 }}>Get In Touch</span>
                         <div style={{ height: '1px', width: '60px', background: `linear-gradient(90deg, ${GOLD}, transparent)` }} />
                     </div>
-                    <h2 style={{ fontFamily: 'Georgia, serif', fontSize: 'clamp(1.8rem, 3vw, 2.6rem)', color: '#1A1A1A', marginBottom: '10px' }}>
+                    <h2 style={{ fontFamily: 'Georgia, serif', fontSize: 'clamp(1.8rem, 3vw, 2.6rem)', color: '#C9A24A', marginBottom: '10px' }}>
                         Contact <em style={{ color: GOLD, fontStyle: 'italic' }}>Us</em>
                     </h2>
-                    <p style={{ color: 'rgba(0,0,0,0.6)', fontSize: '0.85rem', maxWidth: '480px', margin: '0 auto' }}>
+                    <p style={{ color: '#C9A24A', fontSize: '0.85rem', maxWidth: '480px', margin: '0 auto' }}>
                         Have questions about joining our family or our products? We're here to help.
                     </p>
                 </div>
