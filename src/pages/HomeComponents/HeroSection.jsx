@@ -50,7 +50,7 @@ const HeroSection = ({ currentSlide, setCurrentSlide, heroSlides, isLoggedIn, us
                                 fontSize: 'clamp(1.8rem, 4.5vw, 3.5rem)',
                                 fontWeight: 700,
                                 lineHeight: 1.15,
-                                color: '#fff',
+                                color: GOLD,
                                 marginBottom: '16px',
                                 textShadow: '0 2px 12px rgba(0,0,0,0.3)'
                             }}>
@@ -69,7 +69,7 @@ const HeroSection = ({ currentSlide, setCurrentSlide, heroSlides, isLoggedIn, us
                             </h2>
                             <p style={{
                                 fontSize: '0.95rem', color: 'rgba(255,255,255,0.85)',
-                                lineHeight: 1.85, maxWidth: '560px', marginBottom: '40px',
+                                lineHeight: 1.85, maxWidth: '560px', fontWeight: 700, marginBottom: '40px',
                                 textShadow: '0 1px 6px rgba(0,0,0,0.2)'
                             }}>
                                 {heroSlides[currentSlide].description}
