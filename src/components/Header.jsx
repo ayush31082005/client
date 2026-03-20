@@ -421,21 +421,21 @@ const Header = () => {
             <List sx={{ flexGrow: 1 }}>
                 <ListItem disablePadding>
                     <StyledListItemButton onClick={() => handleNavigation('/')}>
-                        <ListItemText primary="Home" sx={{ '& .MuiTypography-root': { fontFamily: "'Playfair Display', serif", fontSize: '14px', fontWeight: 700, background: GOLD_GRADIENT, WebkitBackgroundClip: 'text', color: '#C9A24A' } }} />
+                        <ListItemText primary="Home" sx={{ '& .MuiListItemText-primary': { fontFamily: "'Playfair Display', serif", fontSize: '14px', fontWeight: 700, background: GOLD_GRADIENT, WebkitBackgroundClip: 'text', color: '#C9A24A !important' } }} />
                     </StyledListItemButton>
                 </ListItem>
 
                 {/* Company Submenu */}
                 <ListItem disablePadding sx={{ flexDirection: 'column', alignItems: 'flex-start' }}>
                     <StyledListItemButton onClick={handleMobileCompanyToggle} sx={{ width: '100%' }}>
-                        <ListItemText primary="Sanyukt Parivaar" sx={{ '& .MuiTypography-root': { fontFamily: "'Playfair Display', serif", fontSize: '14px', fontWeight: 700, background: GOLD_GRADIENT, WebkitBackgroundClip: 'text', color: '#C9A24A' } }} />
+                        <ListItemText primary="Sanyukt Parivaar" sx={{ '& .MuiListItemText-primary': { fontFamily: "'Playfair Display', serif", fontSize: '14px', fontWeight: 700, background: GOLD_GRADIENT, WebkitBackgroundClip: 'text', color: '#C9A24A !important' } }} />
                         {mobileSubmenu === 'company' ? <ExpandLess sx={{ color: '#C9A24A' }} /> : <ExpandMore sx={{ color: '#C9A24A' }} />}
                     </StyledListItemButton>
                     <Collapse in={mobileSubmenu === 'company'} timeout="auto" unmountOnExit sx={{ width: '100%' }}>
                         <List component="div" disablePadding>
                             {companySubItems.map((subItem) => (
                                 <StyledListItemButton key={subItem.name} sx={{ pl: 4 }} onClick={() => handleNavigation(subItem.path)}>
-                                    <ListItemText primary={subItem.name} sx={{ '& .MuiTypography-root': { fontFamily: "'Playfair Display', serif", fontSize: '13px', fontWeight: 400, background: GOLD_GRADIENT, WebkitBackgroundClip: 'text', color: '#C9A24A' } }} />
+                                    <ListItemText primary={subItem.name} sx={{ '& .MuiListItemText-primary': { fontFamily: "'Playfair Display', serif", fontSize: '13px', fontWeight: 400, background: GOLD_GRADIENT, WebkitBackgroundClip: 'text', color: '#C9A24A !important' } }} />
                                 </StyledListItemButton>
                             ))}
                         </List>
@@ -445,7 +445,7 @@ const Header = () => {
                 {menuItems.slice(1).map((item) => (
                     <ListItem key={item.name} disablePadding>
                         <StyledListItemButton onClick={() => handleNavigation(item.path)}>
-                            <ListItemText primary={item.name} sx={{ '& .MuiTypography-root': { fontFamily: "'Playfair Display', serif", fontSize: '14px', fontWeight: 700, background: GOLD_GRADIENT, WebkitBackgroundClip: 'text', color: '#C9A24A' } }} />
+                            <ListItemText primary={item.name} sx={{ '& .MuiListItemText-primary': { fontFamily: "'Playfair Display', serif", fontSize: '14px', fontWeight: 700, background: GOLD_GRADIENT, WebkitBackgroundClip: 'text', color: '#C9A24A !important' } }} />
                         </StyledListItemButton>
                     </ListItem>
                 ))}
@@ -453,14 +453,14 @@ const Header = () => {
                 {/* Franchise Submenu */}
                 <ListItem disablePadding sx={{ flexDirection: 'column', alignItems: 'flex-start' }}>
                     <StyledListItemButton onClick={handleMobileFranchiseToggle} sx={{ width: '100%' }}>
-                        <ListItemText primary="Franchise" sx={{ '& .MuiTypography-root': { fontFamily: "'Playfair Display', serif", fontSize: '14px', fontWeight: 700, background: GOLD_GRADIENT, WebkitBackgroundClip: 'text', color: '#C9A24A' } }} />
+                        <ListItemText primary="Franchise" sx={{ '& .MuiListItemText-primary': { fontFamily: "'Playfair Display', serif", fontSize: '14px', fontWeight: 700, background: GOLD_GRADIENT, WebkitBackgroundClip: 'text', color: '#C9A24A !important' } }} />
                         {mobileSubmenu === 'franchise' ? <ExpandLess sx={{ color: '#C9A24A' }} /> : <ExpandMore sx={{ color: '#C9A24A' }} />}
                     </StyledListItemButton>
                     <Collapse in={mobileSubmenu === 'franchise'} timeout="auto" unmountOnExit sx={{ width: '100%' }}>
                         <List component="div" disablePadding>
                             {franchiseSubItems.map((subItem) => (
                                 <StyledListItemButton key={subItem.name} sx={{ pl: 4 }} onClick={() => handleNavigation(subItem.path)}>
-                                    <ListItemText primary={subItem.name} sx={{ '& .MuiTypography-root': { fontFamily: "'Playfair Display', serif", fontSize: '13px', fontWeight: 400, background: GOLD_GRADIENT, WebkitBackgroundClip: 'text', color: '#C9A24A' } }} />
+                                    <ListItemText primary={subItem.name} sx={{ '& .MuiListItemText-primary': { fontFamily: "'Playfair Display', serif", fontSize: '13px', fontWeight: 400, background: GOLD_GRADIENT, WebkitBackgroundClip: 'text', color: '#C9A24A !important' } }} />
                                 </StyledListItemButton>
                             ))}
                         </List>
@@ -470,7 +470,7 @@ const Header = () => {
                 {trailItems.map((item) => (
                     <ListItem key={item.name} disablePadding>
                         <StyledListItemButton onClick={() => handleNavigation(item.path)}>
-                            <ListItemText primary={item.name} sx={{ '& .MuiTypography-root': { fontFamily: "'Playfair Display', serif", fontSize: '14px', fontWeight: 700, background: GOLD_GRADIENT, WebkitBackgroundClip: 'text', color: '#C9A24A' } }} />
+                            <ListItemText primary={item.name} sx={{ '& .MuiListItemText-primary': { fontFamily: "'Playfair Display', serif", fontSize: '14px', fontWeight: 700, background: GOLD_GRADIENT, WebkitBackgroundClip: 'text', color: '#C9A24A !important' } }} />
                         </StyledListItemButton>
                     </ListItem>
                 ))}
@@ -493,7 +493,7 @@ const Header = () => {
                                     <ListItem disablePadding sx={{ flexDirection: 'column', alignItems: 'flex-start' }}>
                                         <StyledListItemButton onClick={handleMobileAccountToggle} sx={{ width: '100%', justifyContent: 'center' }}>
                                             <AccountCircleIcon sx={{ mr: 1, color: '#C9A24A' }} />
-                                            <ListItemText primary={getDisplayName()} sx={{ '& .MuiTypography-root': { fontFamily: "'Playfair Display', serif", fontSize: '14px', fontWeight: 600, background: GOLD_GRADIENT, WebkitBackgroundClip: 'text', color: '#C9A24A' } }} />
+                                            <ListItemText primary={getDisplayName()} sx={{ '& .MuiListItemText-primary': { fontFamily: "'Playfair Display', serif", fontSize: '14px', fontWeight: 600, background: GOLD_GRADIENT, WebkitBackgroundClip: 'text', color: '#C9A24A !important' } }} />
                                             {mobileSubmenu === 'account' ? <ExpandLess sx={{ color: '#C9A24A' }} /> : <ExpandMore sx={{ color: '#C9A24A' }} />}
                                         </StyledListItemButton>
                                         <Collapse in={mobileSubmenu === 'account'} timeout="auto" unmountOnExit sx={{ width: '100%' }}>
@@ -502,14 +502,14 @@ const Header = () => {
                                                     <StyledListItemButton key={subItem.name} sx={{ pl: 4 }} onClick={() => handleNavigation(subItem.path)}>
                                                         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, color: '#C9A24A' }}>
                                                             {subItem.icon}
-                                                            <ListItemText primary={subItem.name} sx={{ '& .MuiTypography-root': { fontFamily: "'Playfair Display', serif", fontSize: '13px', fontWeight: 400, background: GOLD_GRADIENT, WebkitBackgroundClip: 'text', color: '#C9A24A' } }} />
+                                                            <ListItemText primary={subItem.name} sx={{ '& .MuiListItemText-primary': { fontFamily: "'Playfair Display', serif", fontSize: '13px', fontWeight: 400, background: GOLD_GRADIENT, WebkitBackgroundClip: 'text', color: '#C9A24A !important' } }} />
                                                         </Box>
                                                     </StyledListItemButton>
                                                 ))}
                                                 <StyledListItemButton sx={{ pl: 4 }} onClick={() => handleNavigation('/my-account')}>
                                                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, color: '#C9A24A' }}>
                                                         <DashboardIcon fontSize="small" />
-                                                        <ListItemText primary="Dashboard Home" sx={{ '& .MuiTypography-root': { fontFamily: "'Playfair Display', serif", fontSize: '13px', fontWeight: 400, background: GOLD_GRADIENT, WebkitBackgroundClip: 'text', color: '#C9A24A' } }} />
+                                                        <ListItemText primary="Dashboard Home" sx={{ '& .MuiListItemText-primary': { fontFamily: "'Playfair Display', serif", fontSize: '13px', fontWeight: 400, background: GOLD_GRADIENT, WebkitBackgroundClip: 'text', color: '#C9A24A !important' } }} />
                                                     </Box>
                                                 </StyledListItemButton>
                                             </List>

@@ -43,7 +43,7 @@ const HeroSection = ({ currentSlide, heroSlides, isLoggedIn, userRole, handleNav
                             animate={{ y: 0, opacity: 1 }}
                             exit={{ y: -20, opacity: 0 }}
                             transition={{ delay: 0.3, duration: 0.9 }}
-                            className="max-w-3xl"
+                            className="max-w-3xl mx-auto text-center"
                         >
                             <h1 style={{
                                 fontFamily: 'Georgia, serif',
@@ -71,12 +71,14 @@ const HeroSection = ({ currentSlide, heroSlides, isLoggedIn, userRole, handleNav
                             <p style={{
                                 fontSize: '0.95rem', color: 'rgba(255,255,255,0.85)',
                                 lineHeight: 1.85, maxWidth: '560px', fontWeight: 700, marginBottom: '40px',
+                                marginLeft: 'auto',
+                                marginRight: 'auto',
                                 textShadow: '0 1px 6px rgba(0,0,0,0.2)'
                             }}>
                                 {heroSlides[currentSlide].description}
                             </p>
 
-                            <div className="flex flex-wrap gap-4">
+                            <div className="flex flex-wrap gap-4 justify-center">
                                 <motion.button
                                     whileHover={{ scale: 1.04 }}
                                     whileTap={{ scale: 0.97 }}
