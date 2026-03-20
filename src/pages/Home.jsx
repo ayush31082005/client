@@ -29,8 +29,8 @@ import { rechargePlans } from '../data/rechargePlans';
 
 // Simple loading fallback
 const SectionLoader = () => (
-    <div className="w-full py-20 flex items-center justify-center bg-gray-50/50">
-        <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-[#0A7A2F]"></div>
+    <div className="w-full py-20 flex items-center justify-center" style={{ background: "#F5EDD8" }}>
+        <div className="animate-spin rounded-full h-10 w-10" style={{ border: "2px solid transparent", borderTopColor: "#C9A24A" }}></div>
     </div>
 );
 
@@ -128,37 +128,11 @@ const HomePage = () => {
     const BSNL_LOGO = `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 80'><text x='100' y='52' font-family='Arial,sans-serif' font-size='32' font-weight='900' fill='%23FF6600' text-anchor='middle'>BSNL</text></svg>`;
 
     const operators = [
-        {
-            id: 'airtel',
-            name: 'Airtel',
-            logo: AIRTEL_LOGO,
-            tagline: '5G Ready',
-            bgColor: 'bg-red-50'
-        },
-        {
-            id: 'jio',
-            name: 'Jio',
-            logo: JIO_LOGO,
-            tagline: 'True 5G',
-            bgColor: 'bg-blue-50'
-        },
-        {
-            id: 'vi',
-            name: 'Vi',
-            logo: VI_LOGO,
-            tagline: 'Best Value',
-            bgColor: 'bg-purple-50'
-        },
-        {
-            id: 'bsnl',
-            name: 'BSNL',
-            logo: BSNL_LOGO,
-            tagline: 'Pan-India',
-            bgColor: 'bg-orange-50'
-        }
+        { id: 'airtel', name: 'Airtel', logo: AIRTEL_LOGO, tagline: '5G Ready', bgColor: 'bg-red-50' },
+        { id: 'jio', name: 'Jio', logo: JIO_LOGO, tagline: 'True 5G', bgColor: 'bg-blue-50' },
+        { id: 'vi', name: 'Vi', logo: VI_LOGO, tagline: 'Best Value', bgColor: 'bg-purple-50' },
+        { id: 'bsnl', name: 'BSNL', logo: BSNL_LOGO, tagline: 'Pan-India', bgColor: 'bg-orange-50' }
     ];
-
-
 
     // E-commerce state
     const [products, setProducts] = useState([]);
@@ -187,15 +161,11 @@ const HomePage = () => {
         "Marketing & growth strategies"
     ];
 
-
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
         }, 5000);
-
-        return () => {
-            clearInterval(interval);
-        };
+        return () => clearInterval(interval);
     }, []);
 
     // Fetch products from API
@@ -203,8 +173,6 @@ const HomePage = () => {
         const fetchProducts = async () => {
             try {
                 const { data } = await api.get('/products');
-                // Only show featured products on the homepage carousel,
-                // fallback to first 8 products if no featured products found
                 const featured = data.filter(p => p.isFeatured);
                 setProducts(featured.length > 0 ? featured : data.slice(0, 8));
             } catch (error) {
@@ -237,8 +205,6 @@ const HomePage = () => {
         window.addEventListener('storage', checkAuth);
         return () => window.removeEventListener('storage', checkAuth);
     }, [navigate]);
-
-
 
     const handleNavigation = (path, options = {}) => {
         navigate(path, options);
@@ -275,20 +241,15 @@ const HomePage = () => {
             try {
                 setIsProcessingPayment(true);
                 const toastId = toast.loading("Processing wallet payment...");
-
                 const { data } = await api.post('/recharge/wallet', {
                     amount: Number(amount),
                     type: 'mobile',
                     operator,
                     rechargeNumber: mobileNumber
                 });
-
                 if (data.success) {
                     toast.success("Recharge successful!", { id: toastId });
-                    setMobileNumber('');
-                    setOperator('');
-                    setAmount('');
-                    setSearchAmount('');
+                    setMobileNumber(''); setOperator(''); setAmount(''); setSearchAmount('');
                     setShowPaymentModal(false);
                 } else {
                     toast.error(data.message || "Wallet payment failed", { id: toastId });
@@ -300,38 +261,18 @@ const HomePage = () => {
                 setIsProcessingPayment(false);
             }
         } else if (method === 'online') {
-            // Razorpay logic
-            const loadScript = (src) => {
-                return new Promise((resolve) => {
-                    const script = document.createElement("script");
-                    script.src = src;
-                    script.onload = () => resolve(true);
-                    script.onerror = () => resolve(false);
-                    document.body.appendChild(script);
-                });
-            };
-
             try {
                 setIsProcessingPayment(true);
                 const toastId = toast.loading("Initiating secure payment...");
-
-                // 1. Create Order on backend
                 const { data: orderData } = await api.post('/recharge/create-order', {
-                    amount: Number(amount),
-                    type: 'mobile',
-                    operator,
-                    rechargeNumber: mobileNumber
+                    amount: Number(amount), type: 'mobile', operator, rechargeNumber: mobileNumber
                 });
-
                 if (!orderData.success) {
                     toast.error("Failed to initiate order", { id: toastId });
                     setIsProcessingPayment(false);
                     return;
                 }
-
                 toast.dismiss(toastId);
-
-                // 2. Open Razorpay Checkout Widget
                 const options = {
                     key: import.meta.env.VITE_RAZORPAY_KEY_ID || "rzp_test_SQbbsEM3Dlfgi2",
                     amount: orderData.order.amount,
@@ -342,21 +283,15 @@ const HomePage = () => {
                     handler: async function (response) {
                         try {
                             const verifyToast = toast.loading("Verifying payment...");
-
-                            // 3. Verify Payment
                             const { data: verifyData } = await api.post('/recharge/verify-payment', {
                                 razorpay_order_id: response.razorpay_order_id,
                                 razorpay_payment_id: response.razorpay_payment_id,
                                 razorpay_signature: response.razorpay_signature,
                                 transactionId: orderData.transactionId
                             });
-
                             if (verifyData.success) {
                                 toast.success("Recharge successful!", { id: verifyToast });
-                                setMobileNumber('');
-                                setOperator('');
-                                setAmount('');
-                                setSearchAmount('');
+                                setMobileNumber(''); setOperator(''); setAmount(''); setSearchAmount('');
                                 setShowPaymentModal(false);
                             } else {
                                 toast.error("Payment verification failed", { id: verifyToast });
@@ -368,28 +303,20 @@ const HomePage = () => {
                             setIsProcessingPayment(false);
                         }
                     },
-                    modal: {
-                        ondismiss: function () {
-                            setIsProcessingPayment(false);
-                        }
-                    },
+                    modal: { ondismiss: function () { setIsProcessingPayment(false); } },
                     prefill: {
                         name: "Sanyukt Member",
                         email: "info@sanyuktparivaar.com",
                         contact: (mobileNumber || "").toString().replace(/\D/g, '').slice(-10)
                     },
-                    theme: {
-                        color: "#0A7A2F"
-                    }
+                    theme: { color: "#0A7A2F" }
                 };
-
                 const rzp1 = new window.Razorpay(options);
                 rzp1.on('payment.failed', function (response) {
                     toast.error(`Payment Failed: ${response.error.description}`);
                     setIsProcessingPayment(false);
                 });
                 rzp1.open();
-
             } catch (error) {
                 console.error("Recharge Error:", error);
                 toast.error(error?.response?.data?.message || "Something went wrong. Please try again.");
@@ -398,25 +325,11 @@ const HomePage = () => {
         }
     };
 
-    const selectPlan = (planAmount) => {
-        setAmount(planAmount);
-        setShowPlansModal(false);
-    };
-
-    const openPlanPopup = () => {
-        setShowPlansModal(true);
-    };
-
-    const handleImageError = (productName) => {
-        setImageErrors(prev => ({ ...prev, [productName]: true }));
-    };
-
+    const selectPlan = (planAmount) => { setAmount(planAmount); setShowPlansModal(false); };
+    const openPlanPopup = () => { setShowPlansModal(true); };
+    const handleImageError = (productName) => { setImageErrors(prev => ({ ...prev, [productName]: true })); };
     const toggleWishlist = (productName) => {
-        setWishlist(prev =>
-            prev.includes(productName)
-                ? prev.filter(p => p !== productName)
-                : [...prev, productName]
-        );
+        setWishlist(prev => prev.includes(productName) ? prev.filter(p => p !== productName) : [...prev, productName]);
     };
 
     const addToCart = (product) => {
@@ -426,17 +339,10 @@ const HomePage = () => {
         setTimeout(() => setShowCartNotification(false), 3000);
     };
 
-    const handleProductClick = (product) => {
-        setSelectedProduct(product);
-        setIsProductModalOpen(true);
-    };
+    const handleProductClick = (product) => { setSelectedProduct(product); setIsProductModalOpen(true); };
 
     const handleBuyNow = (product) => {
-        if (!isLoggedIn) {
-            toast.error('Please login to proceed');
-            navigate('/login');
-            return;
-        }
+        if (!isLoggedIn) { toast.error('Please login to proceed'); navigate('/login'); return; }
         setIsProductModalOpen(false);
         navigate('/checkout', { state: { product } });
     };
@@ -444,10 +350,7 @@ const HomePage = () => {
     const handleContactSubmit = async (e) => {
         e.preventDefault();
         const { firstName, message } = contactForm;
-        if (!firstName.trim() || !message.trim()) {
-            toast.error('Please fill in your name and message.');
-            return;
-        }
+        if (!firstName.trim() || !message.trim()) { toast.error('Please fill in your name and message.'); return; }
         setContactSubmitting(true);
         try {
             const { data } = await api.post('/contact', contactForm);
@@ -466,15 +369,13 @@ const HomePage = () => {
         const mrpValue = typeof mrp === 'string' ? parseInt(mrp.replace('₹', '')) : mrp;
         const dpValue = typeof dp === 'string' ? parseInt(dp.replace('₹', '')) : dp;
         if (!mrpValue || !dpValue) return 0;
-        const discount = ((mrpValue - dpValue) / mrpValue * 100).toFixed(0);
-        return discount;
+        return ((mrpValue - dpValue) / mrpValue * 100).toFixed(0);
     };
 
     const renderStars = (rating) => {
         const stars = [];
         const fullStars = Math.floor(rating);
         const hasHalfStar = rating % 1 >= 0.5;
-
         for (let i = 0; i < 5; i++) {
             if (i < fullStars) {
                 stars.push(<Star key={i} className="w-3 h-3 fill-current text-yellow-400" />);
@@ -495,24 +396,9 @@ const HomePage = () => {
     };
 
     const carouselRef = React.useRef(null);
-    // const scroll = (direction) => {
-    //     const container = carouselRef.current;
-    //     if (container) {
-    //         const scrollAmount = container.offsetWidth * 0.8;
-    //         const targetScroll = direction === 'left'
-    //             ? container.scrollLeft - scrollAmount
-    //             : container.scrollLeft + scrollAmount;
-
-    //         container.scrollTo({
-    //             left: targetScroll,
-    //             behavior: 'smooth'
-    //         });
-    //     }
-    // };
-
 
     return (
-        <div className="min-h-screen font-sans" style={{ background: '#0a0800' }}>
+        <div className="min-h-screen font-sans" style={{ background: '#F5EDD8' }}>
             <React.Suspense fallback={<SectionLoader />}>
                 <HeroSection
                     currentSlide={currentSlide}
@@ -567,7 +453,7 @@ const HomePage = () => {
                 {/* Mid CTA Strip */}
                 <section style={{
                     padding: '48px 0',
-                    background: 'linear-gradient(135deg, #1a1508 0%, #0f0d07 40%, #1a1508 100%)',
+                    background: 'linear-gradient(135deg, #EDE0C4 0%, #EFE6CC 40%, #EDE0C4 100%)',
                     borderTop: '1px solid rgba(201,168,76,0.2)',
                     borderBottom: '1px solid rgba(201,168,76,0.2)',
                     position: 'relative', overflow: 'hidden'
@@ -581,11 +467,11 @@ const HomePage = () => {
                     <div className="container mx-auto px-4 md:px-12">
                         <div className="flex flex-col md:flex-row items-center justify-between gap-5">
                             <div>
-                                <div style={{ fontSize: '0.6rem', letterSpacing: '4px', textTransform: 'uppercase', color: '#c9a84c', fontWeight: 600, marginBottom: '8px' }}>
+                                <div style={{ fontSize: '0.6rem', letterSpacing: '4px', textTransform: 'uppercase', color: '#000000', fontWeight: 600, marginBottom: '8px' }}>
                                     Milestone
                                 </div>
-                                <h3 style={{ fontFamily: 'Georgia, serif', fontSize: 'clamp(1.2rem, 2.5vw, 1.8rem)', color: '#fff', fontWeight: 600 }}>
-                                    One of the <em style={{ color: '#e8c97a', fontStyle: 'italic' }}>Fastest Growing</em> Direct Selling Companies
+                                <h3 style={{ fontFamily: 'Georgia, serif', fontSize: 'clamp(1.2rem, 2.5vw, 1.8rem)', color: '#000000', fontWeight: 600 }}>
+                                    One of the <em style={{ color: '#8B5E0A', fontStyle: 'italic' }}>Fastest Growing</em> Direct Selling Companies
                                 </h3>
                             </div>
                             <button
@@ -593,7 +479,7 @@ const HomePage = () => {
                                 style={{
                                     padding: '13px 32px', whiteSpace: 'nowrap',
                                     background: 'linear-gradient(135deg, #c9a84c, #8a6b2a)',
-                                    color: '#0a0800', fontWeight: 700,
+                                    color: '#F5EDD8', fontWeight: 700,
                                     fontSize: '0.72rem', letterSpacing: '2.5px', textTransform: 'uppercase',
                                     border: 'none', borderRadius: '2px', cursor: 'pointer',
                                     boxShadow: '0 4px 24px rgba(201,168,76,0.3)', transition: 'all 0.3s'
@@ -626,70 +512,51 @@ const HomePage = () => {
                 {/* Final Trust Section */}
                 <section style={{
                     padding: '80px 0',
-                    background: '#0a0800',
+                    background: '#F5EDD8',
                     borderTop: '1px solid rgba(201,168,76,0.15)',
                     position: 'relative', overflow: 'hidden'
                 }}>
-                    {/* Decorative background glow */}
                     <div style={{
                         position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)',
                         width: '700px', height: '400px', borderRadius: '50%',
-                        background: 'radial-gradient(ellipse, rgba(201,168,76,0.06), transparent 65%)',
+                        background: 'radial-gradient(ellipse, rgba(201,162,74,0.08), transparent 65%)',
                         pointerEvents: 'none'
                     }} />
-                    {/* Top gold line */}
                     <div style={{
                         position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)',
                         width: '120px', height: '2px',
-                        background: 'linear-gradient(90deg, transparent, #c9a84c, transparent)'
+                        background: 'linear-gradient(90deg, transparent, #C9A24A, transparent)'
                     }} />
 
                     <div className="container mx-auto px-4 text-center" style={{ position: 'relative', zIndex: 1 }}>
-                        {/* Eyebrow */}
                         <div className="flex items-center justify-center gap-4 mb-4">
                             <div style={{ height: '1px', width: '60px', background: 'linear-gradient(90deg, transparent, #c9a84c)' }} />
-                            <span style={{ color: '#c9a84c', fontSize: '0.65rem', letterSpacing: '4px', textTransform: 'uppercase', fontWeight: 600 }}>Join Us</span>
+                            <span style={{ color: '#000000', fontSize: '0.65rem', letterSpacing: '4px', textTransform: 'uppercase', fontWeight: 600 }}>Join Us</span>
                             <div style={{ height: '1px', width: '60px', background: 'linear-gradient(90deg, #c9a84c, transparent)' }} />
                         </div>
 
                         <h2 style={{
                             fontFamily: 'Georgia, serif',
                             fontSize: 'clamp(1.8rem, 3.5vw, 3rem)',
-                            color: '#fff', marginBottom: '16px', lineHeight: 1.25
+                            color: '#000000', marginBottom: '16px', lineHeight: 1.25
                         }}>
-                            Together We <em style={{ color: '#e8c97a', fontStyle: 'italic' }}>Grow,</em><br />
-                            Together We <em style={{ color: '#e8c97a', fontStyle: 'italic' }}>Prosper</em>
+                            Together We <em style={{ color: '#8B5E0A', fontStyle: 'italic' }}>Grow,</em><br />
+                            Together We <em style={{ color: '#8B5E0A', fontStyle: 'italic' }}>Prosper</em>
                         </h2>
 
                         <p style={{
-                            fontSize: '0.92rem', color: 'rgba(196,185,154,0.8)',
+                            fontSize: '0.92rem', color: 'rgba(0,0,0,0.7)',
                             lineHeight: 1.85, maxWidth: '520px', margin: '0 auto 40px'
                         }}>
-                            At Sanyukt Parivaar & Rich Life Pvt.Ltd., we don't just build incomewe build people, confidence, and a better future.
+                            At Sanyukt Parivaar & Rich Life Pvt.Ltd., we don't just build income — we build people, confidence, and a better future.
                         </p>
-
-                        {/* Trust indicators */}
-                        <div className="flex flex-wrap justify-center gap-6 mb-10">
-                            {['10,000+ Members', '100% Certified', 'Since 2019', 'Pan-India'].map((badge, i) => (
-                                <div key={i} style={{
-                                    padding: '8px 20px',
-                                    background: 'rgba(201,168,76,0.08)',
-                                    border: '1px solid rgba(201,168,76,0.25)',
-                                    borderRadius: '2px',
-                                    fontSize: '0.75rem', letterSpacing: '1.5px',
-                                    color: 'rgba(232,201,122,0.85)', textTransform: 'uppercase', fontWeight: 500
-                                }}>
-                                    {badge}
-                                </div>
-                            ))}
-                        </div>
 
                         <button
                             onClick={() => handleNavigation('/register')}
                             style={{
                                 padding: '15px 48px',
                                 background: 'linear-gradient(135deg, #c9a84c, #8a6b2a)',
-                                color: '#0a0800', fontWeight: 700,
+                                color: '#F5EDD8', fontWeight: 700,
                                 fontSize: '0.78rem', letterSpacing: '2.5px', textTransform: 'uppercase',
                                 border: 'none', borderRadius: '2px', cursor: 'pointer',
                                 boxShadow: '0 4px 32px rgba(201,168,76,0.35)', transition: 'all 0.3s'
@@ -727,7 +594,7 @@ const HomePage = () => {
             {/* Cart Notification */}
             {showCartNotification && (
                 <div className="fixed bottom-4 right-4 z-50 animate-fadeInUp">
-                    <div className="bg-[#0A7A2F] text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-3">
+                    <div style={{ background: "#C9A24A", color: "#fff", padding: "12px 16px", borderRadius: "8px", boxShadow: "0 4px 16px rgba(201,162,74,0.3)", display: "flex", alignItems: "center", gap: "12px" }}>
                         <Check className="w-5 h-5" />
                         <span>{addedToCartProduct} added to cart!</span>
                     </div>

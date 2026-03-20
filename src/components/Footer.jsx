@@ -14,25 +14,18 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import XIcon from '@mui/icons-material/X';
 
 // ─── Theme Constants ────────────────────────────────────────────────────────
-const DARK_BG = '#1E1510';          // deep espresso — matches screenshot
-const DARK_BG_DEEPER = '#140F0A';
-const GOLD = '#C9A84C';
-const GOLD_GRADIENT = 'linear-gradient(90deg, #C9A84C 0%, #E8C66A 50%, #C9A84C 100%)';
-const BORDER_COLOR = '#3A2A1A';
-const TEXT_MUTED = 'rgba(201,168,76,0.75)';
-
-const goldText = {
-    background: GOLD_GRADIENT,
-    WebkitBackgroundClip: 'text',
-    WebkitTextFillColor: 'transparent',
-    backgroundClip: 'text',
-};
+const DARK_BG = '#111111';
+const DARK_BG_DEEPER = '#000000';
+const GOLD = '#C9A24A';
+const BORDER_COLOR = '#2A2A2A';
+const TEXT_MUTED = 'rgba(255,255,255,0.7)';
+const TEXT_WHITE = '#FFFFFF';
 
 // ─── Styled Components ───────────────────────────────────────────────────────
 
 const FooterContainer = styled(Box)({
     backgroundColor: DARK_BG,
-    color: GOLD,
+    color: '#FFFFFF',
     fontFamily: "'Playfair Display', serif",
     width: '100%',
     borderTop: `1px solid ${BORDER_COLOR}`,
@@ -61,7 +54,6 @@ const LogoImage = styled('img')({
     height: '48px',
     width: 'auto',
     objectFit: 'contain',
-    filter: 'drop-shadow(0 0 6px rgba(201,168,76,0.4))',
 });
 
 const LogoTextContainer = styled(Box)({ display: 'flex', flexDirection: 'column' });
@@ -70,10 +62,7 @@ const LogoMain = styled('span')({
     fontFamily: "'Playfair Display', serif",
     fontWeight: 800,
     fontSize: '1.45rem',
-    background: GOLD_GRADIENT,
-    WebkitBackgroundClip: 'text',
-    WebkitTextFillColor: 'transparent',
-    backgroundClip: 'text',
+    color: GOLD,
     letterSpacing: '0.03em',
     lineHeight: 1.2,
 });
@@ -81,7 +70,7 @@ const LogoMain = styled('span')({
 const CompanyDescription = styled(Typography)({
     fontSize: '13.5px',
     lineHeight: 1.75,
-    color: TEXT_MUTED,
+    color: 'rgba(255,255,255,0.75)',
     fontFamily: "'Playfair Display', serif",
     maxWidth: '320px',
     marginBottom: '24px',
@@ -90,10 +79,7 @@ const CompanyDescription = styled(Typography)({
 const SectionTitle = styled(Typography)({
     fontSize: '14.5px',
     fontWeight: 700,
-    background: GOLD_GRADIENT,
-    WebkitBackgroundClip: 'text',
-    WebkitTextFillColor: 'transparent',
-    backgroundClip: 'text',
+    color: GOLD,
     marginBottom: '16px',
     fontFamily: "'Playfair Display', serif",
     borderBottom: `1px solid ${BORDER_COLOR}`,
@@ -104,7 +90,7 @@ const SectionTitle = styled(Typography)({
 
 const FooterLink = styled(Link)({
     display: 'block',
-    color: TEXT_MUTED,
+    color: 'rgba(255,255,255,0.7)',
     fontSize: '13px',
     textDecoration: 'none',
     marginBottom: '9px',
@@ -112,18 +98,15 @@ const FooterLink = styled(Link)({
     transition: 'all 0.22s ease',
     cursor: 'pointer',
     '&:hover': {
+        color: '#FFFFFF',
         paddingLeft: '5px',
-        background: GOLD_GRADIENT,
-        WebkitBackgroundClip: 'text',
-        WebkitTextFillColor: 'transparent',
-        backgroundClip: 'text',
     },
 });
 
 const ContactText = styled(Typography)({
     fontSize: '13.5px',
     lineHeight: 1.65,
-    color: TEXT_MUTED,
+    color: 'rgba(255,255,255,0.75)',
     marginBottom: '8px',
     fontFamily: "'Playfair Display', serif",
 });
@@ -134,11 +117,11 @@ const ContactLine = styled(Box)({
     gap: '8px',
     marginBottom: '10px',
     fontSize: '13.5px',
-    color: TEXT_MUTED,
+    color: 'rgba(255,255,255,0.75)',
     fontFamily: "'Playfair Display', serif",
     cursor: 'pointer',
-    transition: 'opacity 0.2s',
-    '&:hover': { opacity: 1 },
+    transition: 'color 0.2s',
+    '&:hover': { color: '#FFFFFF' },
 });
 
 const SocialButton = styled('a')({
@@ -150,14 +133,14 @@ const SocialButton = styled('a')({
     width: '36px',
     height: '36px',
     borderRadius: '50%',
-    backgroundColor: 'rgba(201,168,76,0.08)',
+    backgroundColor: 'rgba(255,255,255,0.08)',
     border: `1px solid ${BORDER_COLOR}`,
     transition: 'all 0.3s ease',
     '&:hover': {
-        backgroundColor: 'rgba(201,168,76,0.22)',
+        backgroundColor: GOLD,
         border: `1px solid ${GOLD}`,
         transform: 'translateY(-2px)',
-        boxShadow: '0 4px 14px rgba(201,168,76,0.25)',
+        boxShadow: '0 4px 14px rgba(201,162,74,0.3)',
     },
 });
 
@@ -168,7 +151,7 @@ const BottomBar = styled(Box)({
 });
 
 const CopyrightText = styled(Typography)({
-    color: TEXT_MUTED,
+    color: 'rgba(255,255,255,0.65)',
     fontSize: '13px',
     fontFamily: "'Playfair Display', serif",
 });
@@ -219,14 +202,34 @@ const Footer = () => {
                                     src="/logo.png"
                                     alt="Sanyukt Parivaar Logo"
                                     onError={() => setLogoError(true)}
+                                    style={{ mixBlendMode: 'screen' }}
                                 />
                             )}
                             <LogoTextContainer>
-                                <LogoMain>Sanyukt Parivaar</LogoMain>
-                                <Typography sx={{ fontSize: '0.9rem', fontWeight: 700, ...goldText, mb: 0.4 }}>
-                                    &amp; Rich Life Pvt.Ltd.
+
+                                <LogoMain style={{ color: '#C9A24A' }}>
+                                    Sanyukt Parivaar
+                                </LogoMain>
+
+                                <Typography
+                                    sx={{
+                                        fontSize: '0.9rem',
+                                        fontWeight: 700,
+                                        color: '#C9A24A !important',
+                                        mb: 0.4
+                                    }}
+                                >
+                                    & Rich Life Pvt.Ltd.
                                 </Typography>
-                                <Typography sx={{ fontSize: '0.72rem', fontWeight: 600, color: TEXT_MUTED, letterSpacing: '0.02em' }}>
+
+                                <Typography
+                                    sx={{
+                                        fontSize: '0.72rem',
+                                        fontWeight: 600,
+                                        color: '#C9A24A !important',
+                                        letterSpacing: '0.02em'
+                                    }}
+                                >
                                     Together We Grow, Together We Prosper
                                 </Typography>
                             </LogoTextContainer>
@@ -255,75 +258,131 @@ const Footer = () => {
 
                     {/* ── COLUMN 2 – QUICK LINKS ── */}
                     <Grid item xs={6} sm={6} md={2.5}>
-                        <SectionTitle>Quick Links</SectionTitle>
+
+                        {/* FIX: sx + !important */}
+                        <SectionTitle sx={{ color: '#C9A24A !important' }}>
+                            Quick Links
+                        </SectionTitle>
+
                         {quickLinks.map((link, i) => (
                             <FooterLink key={i} onClick={() => handleNavigation(link.path)}>
                                 {link.name}
                             </FooterLink>
                         ))}
+
                     </Grid>
 
                     {/* ── COLUMN 3 – POLICIES + CONTACT ── */}
                     <Grid item xs={6} sm={6} md={5}>
                         <Grid container spacing={2}>
-                            <Grid item xs={12} sm={6}>
-                                <SectionTitle>Our Policies</SectionTitle>
-                                {policyLinks.map((link, i) => (
-                                    <FooterLink key={i} onClick={() => handleNavigation(link.path)}>
-                                        {link.name}
-                                    </FooterLink>
-                                ))}
+                            <Grid item xs={6} sm={6} md={5}>
+                                <Grid container spacing={2}>
+
+                                    <Grid item xs={12} sm={6}>
+
+                                        <SectionTitle sx={{ color: '#C9A24A !important' }}>
+                                            Our Policies
+                                        </SectionTitle>
+
+                                        {policyLinks.map((link, i) => (
+                                            <FooterLink key={i} onClick={() => handleNavigation(link.path)}>
+                                                {link.name}
+                                            </FooterLink>
+                                        ))}
+
+                                    </Grid>
+
+                                </Grid>
                             </Grid>
 
                             {/* Contact – desktop */}
                             <Grid item xs={12} sm={6} sx={{ display: { xs: 'none', sm: 'block' } }}>
-                                <SectionTitle>Contact Us</SectionTitle>
-                                <ContactText sx={{ fontWeight: 700, mb: 1.5, fontSize: '14px', ...goldText }}>
-                                    Sanyukt Parivaar &amp; Rich Life Pvt.Ltd.
+
+                                {/* FIXED: sx + !important use kiya */}
+                                <SectionTitle sx={{ color: '#C9A24A !important' }}>
+                                    Contact Us
+                                </SectionTitle>
+
+                                <ContactText sx={{ fontWeight: 700, mb: 1.5, fontSize: '14px', color: '#C9A24A' }}>
+                                    Sanyukt Parivaar & Rich Life Pvt.Ltd.
                                 </ContactText>
+
                                 <ContactText sx={{
-                                    fontSize: '12.5px', fontWeight: 600,
-                                    borderLeft: `2px solid ${GOLD}`,
-                                    pl: 1.5, mb: 2, opacity: 0.8,
+                                    fontSize: '12.5px',
+                                    fontWeight: 600,
+                                    borderLeft: '2px solid #C9A24A',
+                                    pl: 1.5,
+                                    mb: 2,
+                                    color: '#000000'
                                 }}>
                                     Bhatiniya, Gopinathpur, Harraiya,<br />
                                     Basti - 272130, Uttar Pradesh
                                 </ContactText>
 
                                 <ContactLine onClick={() => window.open('tel:+917880370057', '_self')}>
-                                    <Typography sx={{ fontWeight: 700, mr: 0.5, ...goldText, fontSize: '12.5px' }}>
+                                    <Typography sx={{ fontWeight: 700, mr: 0.5, color: '#C9A24A', fontSize: '12.5px' }}>
                                         Phone:
                                     </Typography>
-                                    +91 78803 70057
+                                    <span style={{ color: '#000000' }}>
+                                        +91 78803 70057
+                                    </span>
                                 </ContactLine>
+
                                 <ContactLine onClick={() => window.open('mailto:info@sanyuktparivaar.com', '_self')}>
-                                    <Typography sx={{ fontWeight: 700, mr: 0.5, ...goldText, fontSize: '12.5px' }}>
+                                    <Typography sx={{ fontWeight: 700, mr: 0.5, color: '#C9A24A', fontSize: '12.5px' }}>
                                         Email:
                                     </Typography>
-                                    info@sanyuktparivaar.com
+                                    <span style={{ color: '#000000' }}>
+                                        info@sanyuktparivaar.com
+                                    </span>
                                 </ContactLine>
+
                             </Grid>
                         </Grid>
                     </Grid>
 
                     {/* Contact – mobile only */}
-                    <Grid item xs={12} sx={{ display: { xs: 'block', sm: 'none' }, pt: '0 !important' }}>
-                        <SectionTitle>Contact Us</SectionTitle>
-                        <ContactText sx={{ fontWeight: 700, mb: 1, fontSize: '13.5px', ...goldText }}>
-                            Sanyukt Parivaar &amp; Rich Life Pvt.Ltd.
+                    <Grid item xs={12} sx={{ display: { xs: 'block', sm: 'none' }, pt: 0 }}>
+
+                        {/* FIXED: sx + !important */}
+                        <SectionTitle sx={{ color: '#C9A24A !important' }}>
+                            Contact Us
+                        </SectionTitle>
+
+                        <ContactText sx={{ fontWeight: 700, mb: 1, fontSize: '13.5px', color: '#C9A24A' }}>
+                            Sanyukt Parivaar & Rich Life Pvt.Ltd.
                         </ContactText>
-                        <ContactText sx={{ fontSize: '12.5px', fontWeight: 600, opacity: 0.8, borderLeft: `2px solid ${GOLD}`, pl: 1.5, mb: 1.5 }}>
+
+                        <ContactText sx={{
+                            fontSize: '12.5px',
+                            fontWeight: 600,
+                            borderLeft: '2px solid #C9A24A',
+                            pl: 1.5,
+                            mb: 1.5,
+                            color: '#000000'
+                        }}>
                             Bhatiniya, Gopinathpur, Harraiya,<br />
                             Basti - 272130, Uttar Pradesh
                         </ContactText>
+
                         <ContactLine onClick={() => window.open('tel:+917880370057', '_self')}>
-                            <Typography sx={{ fontWeight: 700, mr: 0.5, ...goldText, fontSize: '12.5px' }}>Phone:</Typography>
-                            +91 78803 70057
+                            <Typography sx={{ fontWeight: 700, mr: 0.5, color: '#C9A24A', fontSize: '12.5px' }}>
+                                Phone:
+                            </Typography>
+                            <span style={{ color: '#000000' }}>
+                                +91 78803 70057
+                            </span>
                         </ContactLine>
+
                         <ContactLine onClick={() => window.open('mailto:info@sanyuktparivaar.com', '_self')}>
-                            <Typography sx={{ fontWeight: 700, mr: 0.5, ...goldText, fontSize: '12.5px' }}>Email:</Typography>
-                            info@sanyuktparivaar.com
+                            <Typography sx={{ fontWeight: 700, mr: 0.5, color: '#C9A24A', fontSize: '12.5px' }}>
+                                Email:
+                            </Typography>
+                            <span style={{ color: '#000000' }}>
+                                info@sanyuktparivaar.com
+                            </span>
                         </ContactLine>
+
                     </Grid>
 
                 </Grid>
@@ -351,26 +410,17 @@ const Footer = () => {
                             sx={{ ml: 1, display: 'inline-flex', alignItems: 'center', gap: '5px', textDecoration: 'none', '&:hover': { opacity: 0.8 } }}
                         >
                             <Box sx={{
-                                background: GOLD_GRADIENT,
-                                color: DARK_BG,
+                                background: GOLD,
+                                color: '#000',
                                 px: 1, py: 0.25, borderRadius: '4px',
                                 fontWeight: 900, fontSize: '10.5px', letterSpacing: '1px',
-                                WebkitTextFillColor: DARK_BG,
                             }}>
                                 AI
                             </Box>
                             <Box sx={{
-                                background: GOLD_GRADIENT,
-                                backgroundSize: '200% auto',
-                                WebkitBackgroundClip: 'text',
-                                WebkitTextFillColor: 'transparent',
+                                color: GOLD,
                                 fontWeight: 900, fontSize: '14.5px', letterSpacing: '1px',
                                 textTransform: 'uppercase',
-                                animation: 'shimmer 3s linear infinite',
-                                '@keyframes shimmer': {
-                                    '0%': { backgroundPosition: '0% center' },
-                                    '100%': { backgroundPosition: '200% center' },
-                                },
                             }}>
                                 GROWTH EXA
                             </Box>

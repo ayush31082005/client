@@ -1,68 +1,92 @@
 import React from 'react';
 
+const BG = '#F5EDD8';
+const CARD = '#EDE0C4';
+const GOLD = '#C9A24A';
+const BROWN = '#1A1A1A';
+const BORDER = 'rgba(139,94,10,0.3)';
+
 const WhyChooseSection = ({ whyChoosePoints }) => {
     return (
-        <section style={{ background: '#0a0800', padding: '80px 0', borderTop: '1px solid rgba(201,168,76,0.1)' }}>
+        <section style={{ background: BG, padding: '72px 0', borderTop: `1px solid ${BORDER}` }}>
             <div className="container mx-auto px-4 md:px-12">
                 {/* Header */}
                 <div className="text-center mb-12">
                     <div className="flex items-center justify-center gap-4 mb-3">
-                        <div style={{ height: '1px', width: '60px', background: 'linear-gradient(90deg, transparent, #c9a84c)' }} />
-                        <span style={{ color: '#c9a84c', fontSize: '0.65rem', letterSpacing: '4px', textTransform: 'uppercase', fontWeight: 600 }}>Our Strength</span>
-                        <div style={{ height: '1px', width: '60px', background: 'linear-gradient(90deg, #c9a84c, transparent)' }} />
+                        <div style={{ height: '1px', width: '60px', background: `linear-gradient(90deg, transparent, ${GOLD})` }} />
+                        <span style={{ color: GOLD, fontSize: '0.65rem', letterSpacing: '4px', textTransform: 'uppercase', fontWeight: 600 }}>Our Strength</span>
+                        <div style={{ height: '1px', width: '60px', background: `linear-gradient(90deg, ${GOLD}, transparent)` }} />
                     </div>
-                    <h2 style={{ fontFamily: 'Georgia, serif', fontSize: 'clamp(1.8rem, 3vw, 2.6rem)', color: '#fff', marginBottom: '10px' }}>
-                        Why Choose <em style={{ color: '#e8c97a', fontStyle: 'italic' }}>Sanyukt Parivaar?</em>
+                    <h2 style={{ fontFamily: 'Georgia, serif', fontSize: 'clamp(1.8rem, 3vw, 2.4rem)', color: '#1A1A1A', marginBottom: '8px' }}>
+                        Why Choose <em style={{ color: GOLD, fontStyle: 'italic' }}>Sanyukt Parivaar?</em>
                     </h2>
-                    <p style={{ color: 'rgba(196,185,154,0.7)', fontSize: '0.85rem', maxWidth: '480px', margin: '0 auto' }}>
+                    <p style={{ color: 'rgba(0,0,0,0.6)', fontSize: '0.85rem', maxWidth: '480px', margin: '0 auto' }}>
                         Discover what makes us the preferred choice for thousands of entrepreneurs
                     </p>
                 </div>
 
-                {/* Cards grid */}
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
+                {/* Cards — image 1 style: rounded, beige bg, gold icon top-center, title, description */}
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-5 md:gap-6">
                     {whyChoosePoints.map((point, index) => (
                         <div
                             key={index}
                             style={{
-                                background: '#13100a',
-                                border: '1px solid rgba(201,168,76,0.15)',
-                                padding: '28px 22px',
-                                borderRadius: '4px',
+                                background: CARD,
+                                border: `1.5px solid ${BORDER}`,
+                                borderRadius: '12px',
+                                padding: '32px 20px 28px',
+                                textAlign: 'center',
                                 cursor: 'pointer',
-                                transition: 'all 0.35s',
+                                transition: 'all 0.3s',
+                                boxShadow: '0 2px 10px rgba(44,26,14,0.07)',
                                 position: 'relative',
-                                overflow: 'hidden'
+                                overflow: 'hidden',
                             }}
                             onMouseEnter={e => {
-                                e.currentTarget.style.border = '1px solid rgba(201,168,76,0.45)';
+                                e.currentTarget.style.border = `1.5px solid ${GOLD}`;
                                 e.currentTarget.style.transform = 'translateY(-5px)';
-                                e.currentTarget.style.boxShadow = '0 16px 48px rgba(0,0,0,0.4)';
+                                e.currentTarget.style.boxShadow = '0 12px 32px rgba(44,26,14,0.14)';
                             }}
                             onMouseLeave={e => {
-                                e.currentTarget.style.border = '1px solid rgba(201,168,76,0.15)';
+                                e.currentTarget.style.border = `1.5px solid ${BORDER}`;
                                 e.currentTarget.style.transform = 'none';
-                                e.currentTarget.style.boxShadow = 'none';
+                                e.currentTarget.style.boxShadow = '0 2px 10px rgba(44,26,14,0.07)';
                             }}
                         >
-                            {/* Gold bottom border line */}
+                            {/* Gold icon circle — top center */}
                             <div style={{
-                                position: 'absolute', bottom: 0, left: 0, right: 0, height: '2px',
-                                background: 'linear-gradient(90deg, transparent, #c9a84c, transparent)'
-                            }} />
-                            <div style={{
-                                width: '40px', height: '40px',
-                                background: 'rgba(201,168,76,0.12)',
-                                border: '1px solid rgba(201,168,76,0.3)',
-                                borderRadius: '4px',
+                                width: '52px', height: '52px',
+                                background: 'rgba(201,162,74,0.18)',
+                                border: `1.5px solid rgba(201,162,74,0.5)`,
+                                borderRadius: '50%',
                                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                marginBottom: '14px', color: '#c9a84c'
+                                margin: '0 auto 16px',
+                                color: GOLD,
                             }}>
                                 {point.icon}
                             </div>
-                            <p style={{ color: 'rgba(196,185,154,0.85)', fontSize: '0.82rem', lineHeight: 1.75 }}>
+
+                            {/* Title — use first few words as title */}
+                            <div style={{
+                                fontFamily: 'Georgia, serif',
+                                fontSize: '0.95rem', fontWeight: 700,
+                                color: '#1A1A1A', marginBottom: '8px',
+                                lineHeight: 1.3
+                            }}>
+                                {point.text.split(' ').slice(0, 4).join(' ')}
+                            </div>
+
+                            {/* Description */}
+                            <p style={{ color: 'rgba(0,0,0,0.65)', fontSize: '0.78rem', lineHeight: 1.7, margin: 0 }}>
                                 {point.text}
                             </p>
+
+                            {/* Gold bottom accent line */}
+                            <div style={{
+                                position: 'absolute', bottom: 0, left: '20%', right: '20%', height: '3px',
+                                background: `linear-gradient(90deg, transparent, ${GOLD}, transparent)`,
+                                borderRadius: '2px'
+                            }} />
                         </div>
                     ))}
                 </div>
